@@ -1,4 +1,6 @@
 > Project forked from [GitHub - mikro-orm/nestjs-realworld-example-app: Example real world backend API built with NestJS + MikroORM](https://github.com/mikro-orm/nestjs-realworld-example-app)
+>
+> read [NOTES](NOTES.md)
 
 ![NestJS](project-logo.png)
 
