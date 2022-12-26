@@ -1,8 +1,6 @@
-# ![NestJS](project-logo.png)
+> Project forked from [GitHub - mikro-orm/nestjs-realworld-example-app: Example real world backend API built with NestJS + MikroORM](https://github.com/mikro-orm/nestjs-realworld-example-app)
 
-## Forked From
-
-- Project forked from [GitHub - mikro-orm/nestjs-realworld-example-app: Example real world backend API built with NestJS + MikroORM](https://github.com/mikro-orm/nestjs-realworld-example-app)
+![NestJS](project-logo.png)
 
 > ### NestJS + MikroORM codebase containing real world examples (CRUD, auth, advanced patterns, etc) that adheres to the [RealWorld](https://github.com/gothinkster/realworld-example-apps) API spec.
 
