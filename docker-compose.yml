@@ -33,5 +33,8 @@ services:
       dockerfile: Dockerfile
     depends_on:
       - db
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=postgres@domain.com
+      - PGADMIN_DEFAULT_PASSWORD=example
     ports:
       - 8090:3000

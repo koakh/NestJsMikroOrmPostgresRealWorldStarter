@@ -4,7 +4,8 @@
   "description": "NestJS + MikroORM realworld API example (MySQL)",
   "main": "index.js",
   "scripts": {
-    "build": "tsc -p tsconfig.build.json",
+    "prebuild": "rimraf dist",
+    "build": "nest build",
     "start": "nest start",
     "start:dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",
@@ -15,7 +16,9 @@
     "test:watch": "jest --watch --config=jest.json",
     "test:coverage": "jest --config=jest.json --coverage --coverageDirectory=coverage",
     "test:e2e": "APIURL=http://localhost:3000/api ./e2e/run-api-tests.sh",
-    "docker:build": "docker build . -t koakh-nestjs-realworld-example-app:latest"
+    "docker:build": "docker build . -t koakh-nestjs-realworld-example-app:latest",
+    "docker:up": "docker-compose up",
+    "docker:down": "docker-compose down --volumes --remove-orphans"
   },
   "repository": {
     "type": "git",

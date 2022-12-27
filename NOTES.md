@@ -133,3 +133,9 @@ $ curl -s --request POST \
   }
 }
 ```
+
+## Build and Run Image
+
+
+
+uncomment `nestjs-realworld-example-app` service on `docker-compose.yml`
