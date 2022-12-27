@@ -12,7 +12,7 @@ export class ProfileController {
   constructor(private readonly profileService: ProfileService) {}
 
   @Get(':username')
-  async getProfile(@User('id') userId: number, @Param('username') username: string): Promise<IProfileRO> {
+  async getProfile(@User('id') userId: string, @Param('username') username: string): Promise<IProfileRO> {
     return this.profileService.findProfile(userId, username);
   }
 
@@ -23,7 +23,7 @@ export class ProfileController {
   }
 
   @Delete(':username/follow')
-  async unFollow(@User('id') userId: number, @Param('username') username: string): Promise<IProfileRO> {
+  async unFollow(@User('id') userId: string, @Param('username') username: string): Promise<IProfileRO> {
     return this.profileService.unFollow(userId, username);
   }
 }

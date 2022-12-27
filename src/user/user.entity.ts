@@ -1,5 +1,3 @@
-import { IsEmail } from 'class-validator';
-import crypto from 'crypto';
 import {
   Collection,
   Entity, EntityDTO,
@@ -8,8 +6,11 @@ import {
   OneToMany,
   PrimaryKey,
   Property,
-  wrap,
+  wrap
 } from '@mikro-orm/core';
+import { IsEmail } from 'class-validator';
+import crypto from 'crypto';
+import { v4 } from 'uuid';
 import { Article } from '../article/article.entity';
 import { UserRepository } from './user.repository';
 
@@ -19,7 +20,7 @@ export class User {
   [EntityRepositoryType]?: UserRepository;
 
   @PrimaryKey()
-  id: number;
+  id: string = v4();
 
   @Property()
   username: string;
@@ -37,7 +38,7 @@ export class User {
   @Property({ hidden: true })
   password: string;
 
-  @ManyToMany({ hidden: true })
+  @ManyToMany({ entity: () => Article, hidden: true })
   favorites = new Collection<Article>(this);
 
   @ManyToMany({ entity: () => User, inversedBy: u => u.followed, owner: true, pivotTable: 'user_to_follower', joinColumn: 'follower', inverseJoinColumn: 'following', hidden: true })
@@ -58,7 +59,7 @@ export class User {
   toJSON(user?: User) {
     const o = wrap<User>(this).toObject() as UserDTO;
     o.image = this.image || 'https://static.productionready.io/images/smiley-cyrus.jpg';
-    o.following = user && user.followers.isInitialized() ? user.followers.contains(this) : false; // TODO or followed?
+    o.following = user && user.followers.isInitialized() ? user.followers.contains(this) : false;
 
     return o;
   }

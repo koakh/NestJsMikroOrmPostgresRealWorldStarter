@@ -25,7 +25,7 @@ export class ProfileService {
     return { profile: user };
   }
 
-  async findProfile(id: number, followingUsername: string): Promise<IProfileRO> {
+  async findProfile(id: string, followingUsername: string): Promise<IProfileRO> {
     const foundProfile = await this.userRepository.findOne({ username: followingUsername }, {
       populate: ['followers'],
     });
@@ -72,7 +72,7 @@ export class ProfileService {
     return { profile };
   }
 
-  async unFollow(followerId: number, username: string): Promise<IProfileRO> {
+  async unFollow(followerId: string, username: string): Promise<IProfileRO> {
     if (!followerId || !username) {
       throw new HttpException('FollowerId and username not provided.', HttpStatus.BAD_REQUEST);
     }

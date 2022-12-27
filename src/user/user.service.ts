@@ -55,7 +55,7 @@ export class UserService {
     }
   }
 
-  async update(id: number, dto: UpdateUserDto) {
+  async update(id: string, dto: UpdateUserDto) {
     const user = await this.userRepository.findOne(id);
     wrap(user).assign(dto);
     await this.userRepository.flush();
@@ -67,7 +67,7 @@ export class UserService {
     return this.userRepository.remove({ email });
   }
 
-  async findById(id: number): Promise<IUserRO> {
+  async findById(id: string): Promise<IUserRO> {
     const user = await this.userRepository.findOne(id);
 
     if (!user) {

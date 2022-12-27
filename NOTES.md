@@ -35,7 +35,7 @@ add `docker-compose.yml` content
 
 > NOTE: if have problem run app and problems with migrations, like stalled migrations, delele `dist/migrations` or whole `dist/` folder, se it in `src/mikro-orm.config.ts`
 
-clean up db and removed stalled migrations, and stack up
+clean up db and removed stalled migrations, and stack up, same as `tearDown` script
 
 ```shell
 $ docker-compose down --volumes --remove-orphans && docker-compose up -d
@@ -136,6 +136,46 @@ $ curl -s --request POST \
 
 ## Build and Run Image
 
-
-
 uncomment `nestjs-realworld-example-app` service on `docker-compose.yml`
+
+## Problems
+
+### [ExceptionHandler] Please provide either 'type' or 'entity' attribute in Comment.article
+
+- [How to resolve "Please provide either 'type' or 'entity' attribute in EntityName.id" error when creating migration in MikroORM?](https://stackoverflow.com/a/68931143)
+
+This works for me - put type attribute to each column. ex `@ManyToMany(() => Category)`
+
+```ts
+  // KO
+  @ManyToMany({ hidden: true })
+  favorites = new Collection<Article>(this);
+
+  // OK
+  @ManyToMany({ entity: () => Article, hidden: true })
+  favorites = new Collection<Article>(this);
+```
+
+### Docker Image
+
+- [@mikro-orm/core/typings.js:54 Unexpected token ? Unexpected token ?](https://github.com/mikro-orm/mikro-orm/discussions/2952)
+
+```shell
+# error
+/usr/src/app/node_modules/.pnpm/@mikro-orm+core@5.6.2_othgpucmobiy5h3lsinwgo7vla/node_modules/@mikro-orm/core/typings.js:57
+        this.root ?? (this.root = this);
+```
+
+- Upgrade your node version, and dont ignore warnings you get when you install things, as this is validated on npm level.
+- I have updated my node to 17. It is working perfectly well now. Thanks
+
+```shell
+$ node dist/main
+/usr/src/app/node_modules/@mikro-orm/core/typings.js:57
+        this.root ?? (this.root = this);
+
+$ node -v
+v12.13.1
+```
+
+> now docker image works without issues

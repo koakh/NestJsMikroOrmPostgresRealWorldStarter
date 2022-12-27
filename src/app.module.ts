@@ -1,23 +1,42 @@
-import { MiddlewareConsumer, Module, NestModule, OnModuleInit } from '@nestjs/common';
 import { MikroORM } from '@mikro-orm/core';
-import { MikroOrmMiddleware, MikroOrmModule } from '@mikro-orm/nestjs';
+import { MikroOrmMiddleware } from '@mikro-orm/nestjs';
+import { MiddlewareConsumer, Module, NestModule, OnModuleInit } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
 
-import { AppController } from './app.controller';
-import { ArticleModule } from './article/article.module';
+import * as Joi from 'joi';
+// watch for reorder imports here else we can't get bellow error
+// Error: Please provide either 'type' or 'entity' attribute in PostEntity.author
+import { DatabaseModule } from './database/database.module';
+import { UserModule } from './user/user.module';
 import { ProfileModule } from './profile/profile.module';
 import { TagModule } from './tag/tag.module';
-import { UserModule } from './user/user.module';
+import { AppController } from './app.controller';
+import { ArticleModule } from './article/article.module';
 
 @Module({
-  controllers: [
-    AppController,
-  ],
   imports: [
-    MikroOrmModule.forRoot(),
+    ConfigModule.forRoot({
+      validationSchema: Joi.object({
+        POSTGRES_HOST: Joi.string().required(),
+        POSTGRES_PORT: Joi.number().required(),
+        POSTGRES_USER: Joi.string().required(),
+        POSTGRES_PASSWORD: Joi.string().required(),
+        POSTGRES_DB: Joi.string().required(),
+        // TODO:
+        // JWT_SECRET: Joi.string().required(),
+        // JWT_EXPIRATION_TIME: Joi.string().required(),
+        SHOULD_DEBUG_SQL: Joi.boolean(),
+      }),
+    }),
+    DatabaseModule,
+    // MikroOrmModule.forRoot(),
     ArticleModule,
     UserModule,
     ProfileModule,
     TagModule,
+  ],
+  controllers: [
+    AppController,
   ],
   providers: [],
 })

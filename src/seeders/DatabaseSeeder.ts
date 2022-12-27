@@ -6,9 +6,9 @@ export class DatabaseSeeder extends Seeder {
 
   async run(em: EntityManager): Promise<void> {
     const author = em.create(User, {
-      username: 'John Snow',
-      email: 'snow@wall.st',
-      password: 'snow@wall.st',
+      username: 'koakh',
+      email: 'mail@koakh.com',
+      password: '12345678',
       bio: '',
       image: ''
     });

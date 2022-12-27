@@ -1,0 +1,15 @@
+Project:
+  ✔ config module @done(22-12-27 12:01)
+    ✔ env variables @done(22-12-27 12:01)
+    ✔ id in uuid format @done(22-12-27 12:26)
+    ☐ @critical config service like we have in backend with validation
+  ☐ docker file docker compose with configService / env variables
+  ☐ change all models to {name}Entity
+  ☐ auth
+    ☐ bcrypt
+    ☐ src/config.ts with JWT_SECRET and not SECRET
+  ☐ stuff from backend
+    ☐ logger on boot
+    ☐ certificates
+  ☐ remove
+    ☐ e2e

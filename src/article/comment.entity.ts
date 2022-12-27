@@ -1,12 +1,13 @@
 import { Entity, ManyToOne, PrimaryKey, Property } from '@mikro-orm/core';
 import { User } from '../user/user.entity';
 import { Article } from './article.entity';
+import { v4 } from 'uuid';
 
 @Entity()
 export class Comment {
 
   @PrimaryKey()
-  id: number;
+  id: string = v4();
 
   @Property()
   createdAt = new Date();
@@ -17,10 +18,10 @@ export class Comment {
   @Property()
   body: string;
 
-  @ManyToOne()
+  @ManyToOne({ entity: () => Article })
   article: Article;
 
-  @ManyToOne()
+  @ManyToOne({ entity: () => User })
   author: User;
 
   constructor(author: User, article: Article, body: string) {

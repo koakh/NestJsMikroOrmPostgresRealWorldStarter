@@ -3,12 +3,13 @@ import slug from 'slug';
 
 import { User } from '../user/user.entity';
 import { Comment } from './comment.entity';
+import { v4 } from 'uuid';
 
 @Entity()
 export class Article {
 
   @PrimaryKey()
-  id: number;
+  id: string = v4();
 
   @Property()
   slug: string;
@@ -31,7 +32,7 @@ export class Article {
   @Property({ type: ArrayType })
   tagList: string[] = [];
 
-  @ManyToOne()
+  @ManyToOne({ entity: () => User })
   author: User;
 
   @OneToMany(() => Comment, comment => comment.article, { eager: true, orphanRemoval: true })
