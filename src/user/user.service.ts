@@ -3,11 +3,11 @@ import { validate } from 'class-validator';
 import crypto from 'crypto';
 import jwt from 'jsonwebtoken';
 import { wrap } from '@mikro-orm/core';
-import { SECRET } from '../config';
 import { CreateUserDto, LoginUserDto, UpdateUserDto } from './dto';
 import { User } from './user.entity';
 import { IUserRO } from './user.interface';
 import { UserRepository } from './user.repository';
+import { configuration } from '../config';
 
 @Injectable()
 export class UserService {
@@ -93,7 +93,7 @@ export class UserService {
       exp: exp.getTime() / 1000,
       id: user.id,
       username: user.username,
-    }, SECRET);
+    }, configuration().jwtSecret);
   }
 
   private buildUserRO(user: User) {

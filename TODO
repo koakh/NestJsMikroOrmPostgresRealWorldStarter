@@ -5,6 +5,8 @@ Project:
     ☐ @critical config service like we have in backend with validation
   ☐ docker file docker compose with configService / env variables
   ☐ change all models to {name}Entity
+  ☐ main bootstrap logger, filters etc
+  ☐ debug configuration
   ☐ auth
     ☐ bcrypt
     ☐ src/config.ts with JWT_SECRET and not SECRET

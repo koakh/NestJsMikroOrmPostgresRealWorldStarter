@@ -18,7 +18,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
         autoLoadEntities: true,
         entities: [],
         flushMode: FlushMode.COMMIT,
-        debug: configService.get('SHOULD_DEBUG_SQL'),
+        debug: configService.get('POSTGRES_SHOW_DEBUG_SQL'),
       }),
     }),
   ],

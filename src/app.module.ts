@@ -12,20 +12,31 @@ import { ProfileModule } from './profile/profile.module';
 import { TagModule } from './tag/tag.module';
 import { AppController } from './app.controller';
 import { ArticleModule } from './article/article.module';
+import { configuration } from './config';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
+      isGlobal: true,
+      // TODO:
+      load: [configuration],
       validationSchema: Joi.object({
+        APP_LOGGER: Joi.string(),
+        HTTPS_ENABLED: Joi.string(),
+        HTTP_SERVER_PORT: Joi.string(),
+        HTTPS_SERVER_PORT: Joi.string(),
+        HTTPS_KEY_FILE: Joi.string(),
+        HTTPS_CERT_FILE: Joi.string(),
+        CORS_ORIGIN_ENABLED: Joi.string(),
+        CORS_ORIGIN: Joi.string(),
         POSTGRES_HOST: Joi.string().required(),
         POSTGRES_PORT: Joi.number().required(),
+        POSTGRES_DB: Joi.string().required(),
         POSTGRES_USER: Joi.string().required(),
         POSTGRES_PASSWORD: Joi.string().required(),
-        POSTGRES_DB: Joi.string().required(),
-        // TODO:
-        // JWT_SECRET: Joi.string().required(),
-        // JWT_EXPIRATION_TIME: Joi.string().required(),
-        SHOULD_DEBUG_SQL: Joi.boolean(),
+        POSTGRES_SHOW_DEBUG_SQL: Joi.boolean(),
+        JWT_SECRET: Joi.string().required(),
+        JWT_EXPIRATION_DAYS: Joi.string().required(),
       }),
     }),
     DatabaseModule,

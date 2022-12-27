@@ -5,13 +5,14 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "type": "node",
       "name": "Attach",
       "port": 9229,
       "request": "attach",
       "skipFiles": [
         "<node_internals>/**"
       ],
-      "type": "node"
+      "restart": true
     },    
     {
       "type": "node",
