@@ -1,9 +1,9 @@
 version: '2'
 
 services:
-  db:
+  nestjs-realworld-example-db:
     image: postgres:13.1-alpine
-    container_name: db
+    container_name: nestjs-realworld-example-db
     restart: unless-stopped
     env_file:
       - docker.env
@@ -12,10 +12,12 @@ services:
     # volumes:
     #   - ./volumes/db:/var/lib/postgresql/data
 
-  pgadmin:
+  nestjs-realworld-example-pgadmin:
     image: dpage/pgadmin4
-    container_name: pgadmin
+    container_name: nestjs-realworld-example-pgadmin
     restart: unless-stopped
+    depends_on:
+      - nestjs-realworld-example-db
     env_file:
       - docker.env
     ports:
@@ -29,7 +31,7 @@ services:
       context: .
       dockerfile: Dockerfile
     depends_on:
-      - db
+      - nestjs-realworld-example-db
     env_file:
       - docker.env
     ports:
