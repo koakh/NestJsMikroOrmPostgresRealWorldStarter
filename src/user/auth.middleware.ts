@@ -3,7 +3,7 @@ import { NextFunction, Request, Response } from 'express';
 import jwt from 'jsonwebtoken';
 import { UserService } from './user.service';
 import { IUserData } from './user.interface';
-import { configuration } from '../config';
+import envConfig from '~src/config/env.config';
 
 @Injectable()
 export class AuthMiddleware implements NestMiddleware {
@@ -13,7 +13,7 @@ export class AuthMiddleware implements NestMiddleware {
     const authHeaders = req.headers.authorization;
     if (authHeaders && (authHeaders as string).split(' ')[1]) {
       const token = (authHeaders as string).split(' ')[1];
-      const decoded: any = jwt.verify(token, configuration().jwtSecret);
+      const decoded: any = jwt.verify(token, envConfig().authentication.jwtSecret);
       const user = await this.userService.findById(decoded.id);
 
       if (!user) {

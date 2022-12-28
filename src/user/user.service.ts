@@ -7,7 +7,7 @@ import { CreateUserDto, LoginUserDto, UpdateUserDto } from './dto';
 import { User } from './user.entity';
 import { IUserRO } from './user.interface';
 import { UserRepository } from './user.repository';
-import { configuration } from '../config';
+import envConfig from '~src/config/env.config';
 
 @Injectable()
 export class UserService {
@@ -93,7 +93,7 @@ export class UserService {
       exp: exp.getTime() / 1000,
       id: user.id,
       username: user.username,
-    }, configuration().jwtSecret);
+    }, envConfig().authentication.jwtSecret);
   }
 
   private buildUserRO(user: User) {

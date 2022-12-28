@@ -3,9 +3,13 @@ Project:
     ✔ env variables @done(22-12-27 12:01)
     ✔ id in uuid format @done(22-12-27 12:26)
     ☐ @critical config service like we have in backend with validation
-  ☐ docker file docker compose with configService / env variables
-  ☐ change all models to {name}Entity
+    ☐ @critical refactor whole config
+  ✔ docker file docker compose with configService / env variables @done(22-12-28 10:46)
+  ✔ NestFactory.create opions with httpsOptions and logger @done(22-12-28 12:42)
+  ☐ replace all imports with `~src` alias
   ☐ main bootstrap logger, filters etc
+  ☐ @low change all models to {name}Entity
+  ☐ remove authentication and use cookie authentication from NestJsMikroOrmWanagoTutorial
   ☐ debug configuration
   ☐ auth
     ☐ bcrypt
