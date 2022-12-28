@@ -2,8 +2,8 @@ Project:
   ✔ config module @done(22-12-27 12:01)
     ✔ env variables @done(22-12-27 12:01)
     ✔ id in uuid format @done(22-12-27 12:26)
+    ✔ @critical refactor whole config @done(22-12-28 12:53)
     ☐ @critical config service like we have in backend with validation
-    ☐ @critical refactor whole config
   ✔ docker file docker compose with configService / env variables @done(22-12-28 10:46)
   ✔ NestFactory.create opions with httpsOptions and logger @done(22-12-28 12:42)
   ☐ replace all imports with `~src` alias

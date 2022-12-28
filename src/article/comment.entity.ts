@@ -1,7 +1,8 @@
 import { Entity, ManyToOne, PrimaryKey, Property } from '@mikro-orm/core';
-import { User } from '../user/user.entity';
-import { Article } from './article.entity';
 import { v4 } from 'uuid';
+
+import { User } from '~src/user/user.entity';
+import { Article } from './article.entity';
 
 @Entity()
 export class Comment {

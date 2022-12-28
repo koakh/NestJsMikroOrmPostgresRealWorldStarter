@@ -1,9 +1,9 @@
 import { ArrayType, Collection, Entity, EntityDTO, ManyToOne, OneToMany, PrimaryKey, Property, wrap } from '@mikro-orm/core';
 import slug from 'slug';
-
-import { User } from '../user/user.entity';
-import { Comment } from './comment.entity';
 import { v4 } from 'uuid';
+
+import { User } from '~src/user/user.entity';
+import { Comment } from './comment.entity';
 
 @Entity()
 export class Article {

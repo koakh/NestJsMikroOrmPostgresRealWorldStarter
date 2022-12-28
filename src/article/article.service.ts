@@ -1,9 +1,9 @@
-import { Injectable } from '@nestjs/common';
 import { QueryOrder, wrap } from '@mikro-orm/core';
-import { InjectRepository } from '@mikro-orm/nestjs'
+import { InjectRepository } from '@mikro-orm/nestjs';
 import { EntityRepository } from '@mikro-orm/postgresql';
+import { Injectable } from '@nestjs/common';
 
-import { User } from '../user/user.entity';
+import { User } from '~src/user/user.entity';
 import { Article } from './article.entity';
 import { IArticleRO, IArticlesRO, ICommentsRO } from './article.interface';
 import { Comment } from './comment.entity';

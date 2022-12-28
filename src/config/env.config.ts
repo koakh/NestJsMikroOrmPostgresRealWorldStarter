@@ -1,4 +1,4 @@
-import { EnvironmentVariables } from "../shared/interfaces";
+import { EnvironmentVariables } from '~src/shared/interfaces';
 
 const httpPort = parseInt(process.env.HTTP_SERVER_PORT) || 3000;
 const httpsPort = parseInt(process.env.HTTPS_SERVER_PORT) || 3443;

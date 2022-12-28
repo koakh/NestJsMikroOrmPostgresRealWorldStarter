@@ -1,6 +1,7 @@
-import { Injectable } from '@nestjs/common';
 import { EntityRepository } from '@mikro-orm/core';
-import { InjectRepository } from '@mikro-orm/nestjs'
+import { InjectRepository } from '@mikro-orm/nestjs';
+import { Injectable } from '@nestjs/common';
+
 import { Tag } from './tag.entity';
 import { ITagsRO } from './tag.interface';
 

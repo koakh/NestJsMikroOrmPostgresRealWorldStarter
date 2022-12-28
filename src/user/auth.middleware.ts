@@ -1,9 +1,10 @@
 import { HttpException, HttpStatus, Injectable, NestMiddleware } from '@nestjs/common';
 import { NextFunction, Request, Response } from 'express';
 import jwt from 'jsonwebtoken';
-import { UserService } from './user.service';
-import { IUserData } from './user.interface';
+
 import envConfig from '~src/config/env.config';
+import { IUserData } from './user.interface';
+import { UserService } from './user.service';
 
 @Injectable()
 export class AuthMiddleware implements NestMiddleware {

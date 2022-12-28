@@ -1,5 +1,6 @@
 import { ValidationPipe } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
+
 import { CreateUserDto, UpdateUserDto } from '../dto';
 import { UserController } from '../user.controller';
 import { UserService } from '../user.service';

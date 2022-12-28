@@ -1,10 +1,11 @@
-import config from '../mikro-orm.config';
+import { MikroORM } from '@mikro-orm/core';
+import { MikroOrmModule } from '@mikro-orm/nestjs';
 import { Test } from '@nestjs/testing';
-import { MikroOrmModule } from '@mikro-orm/nestjs'
+
+import config from '../mikro-orm.config';
 import { TagController } from './tag.controller';
 import { Tag } from './tag.entity';
 import { TagService } from './tag.service';
-import { MikroORM } from '@mikro-orm/core';
 
 describe('TagController', () => {
   let tagController: TagController;

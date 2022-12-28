@@ -5,13 +5,13 @@ import { ConfigModule } from '@nestjs/config';
 import * as Joi from 'joi';
 // watch for reorder imports here else we can't get bellow error
 // Error: Please provide either 'type' or 'entity' attribute in PostEntity.author
-import { DatabaseModule } from './database/database.module';
-import { UserModule } from './user/user.module';
-import { ProfileModule } from './profile/profile.module';
-import { TagModule } from './tag/tag.module';
 import { AppController } from './app.controller';
 import { ArticleModule } from './article/article.module';
 import envConfig from './config/env.config';
+import { DatabaseModule } from './database/database.module';
+import { ProfileModule } from './profile/profile.module';
+import { TagModule } from './tag/tag.module';
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [

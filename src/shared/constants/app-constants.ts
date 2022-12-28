@@ -1,4 +1,4 @@
-import { AppConstants } from '../interfaces';
+import { AppConstants } from '~src/shared/interfaces';
 
 export const appConstants: AppConstants = {
   // BOF sync with package.json

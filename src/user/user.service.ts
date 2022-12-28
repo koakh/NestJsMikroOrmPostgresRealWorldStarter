@@ -1,13 +1,14 @@
+import { wrap } from '@mikro-orm/core';
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { validate } from 'class-validator';
 import crypto from 'crypto';
 import jwt from 'jsonwebtoken';
-import { wrap } from '@mikro-orm/core';
+
+import envConfig from '~src/config/env.config';
 import { CreateUserDto, LoginUserDto, UpdateUserDto } from './dto';
 import { User } from './user.entity';
 import { IUserRO } from './user.interface';
 import { UserRepository } from './user.repository';
-import envConfig from '~src/config/env.config';
 
 @Injectable()
 export class UserService {

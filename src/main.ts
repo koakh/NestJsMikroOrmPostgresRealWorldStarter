@@ -3,9 +3,10 @@ import { ConfigService } from '@nestjs/config';
 import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import * as fs from 'fs';
+
 import envConfig from '~src/config/env.config';
-import { AppModule } from './app.module';
-import { appConstants as c } from './shared/constants';
+import { AppModule } from '~src/app.module';
+import { appConstants as c } from '~src/shared/constants';
 
 // this helper config must be here, before be used in NestFactory.create
 export const loggerConfig: false | LoggerService | LogLevel[] = (envConfig().app.logger.split(',') as false | LoggerService | LogLevel[]);
