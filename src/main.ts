@@ -76,7 +76,7 @@ async function bootstrap() {
   const serverProto = httpsEnabled ? 'https' : 'http';
   await app.listen(serverPort).then(() => {
     Logger.log(`  ${c.packageName} v${c.packageVersion} server started`, context);
-    Logger.log(`  server api: '${serverProto}://${c.localDomain}:${serverPort}/v1'`, context);
+    Logger.log(`  server api: '${serverProto}://${c.localDomain}:${serverPort}/api'`, context);
     Logger.log(`  server docs: '${serverProto}://${c.localDomain}:${serverPort}/docs'`, context);
     if (httpsEnabled) {
       Logger.log(`  server certificates: '${httpsKeyFile}, ${httpsCertFile}'`, context);
