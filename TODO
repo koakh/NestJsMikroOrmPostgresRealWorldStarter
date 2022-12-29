@@ -13,22 +13,29 @@ Project:
         #!/usr/bin/env bash
   ✔ NestFactory.create opions with httpsOptions and logger @done(22-12-28 12:42)
   ✔ replace all imports with `~src` alias @done(22-12-28 15:12)
-  ☐ stuff from c3-backend
-    ☐ main bootstrap logger, filters etc
+  ✔ stuff from c3-backend @done(22-12-29 16:04)
+    ✔ main bootstrap logger, filters etc @done(22-12-29 16:04)
     ✔ logger on boot @done(22-12-28 15:12)
     ✔ certificates @done(22-12-28 15:12)
-  ☐ @low change all models to {name}Entity
-  ☐ remove authentication and use cookie authentication from NestJsMikroOrmWanagoTutorial
-  ✔ debug configuration @done(22-12-29 11:36)
-  ☐ auth
+    ✔ debug configuration @done(22-12-29 11:36)
+    ☐ auth
+    ☐ @low remove authentication and use cookie authentication from NestJsMikroOrmWanagoTutorial
     ☐ @low bcrypt
     ✔ src/config.ts with JWT_SECRET and not SECRET @done(22-12-29 10:45)
-  ☐ remove
-    ☐ e2e
-
-
+  ☐ test
+    ☐ test ok
+    ☐ test:e2e ko some assertion errors but all tests pass
 
 today
-  wait-for-it to wait for postgres db for alpine images
-  finish alpine docker image and docker-compose
-  configure debugger and remote debugger
+- wait-for-it to wait for postgres db on alpine docker image
+- finish alpine docker image and docker-compose
+- polish scripts and migrations 
+- finished starter migrations
+- configure debugger and remote debugger
+- implement config service env variables with joi validation
+
+- add GlobalFilters
+- rollback tsconfig import alias ~scr, gives problems with test suite
+- fixed all tests and e2e tests
+- add all api requests to client.http
+- configure swagger and missing paremeters and body, that prevent submit objects etc

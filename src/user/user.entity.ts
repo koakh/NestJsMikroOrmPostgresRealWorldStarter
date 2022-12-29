@@ -3,7 +3,7 @@ import { IsEmail } from 'class-validator';
 import crypto from 'crypto';
 import { v4 } from 'uuid';
 
-import { Article } from '~src/article/article.entity';
+import { Article } from '../article/article.entity';
 import { UserRepository } from './user.repository';
 
 @Entity({ customRepository: () => UserRepository })

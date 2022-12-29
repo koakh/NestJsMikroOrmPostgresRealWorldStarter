@@ -2,7 +2,7 @@ import { HttpException, HttpStatus, Injectable, NestMiddleware } from '@nestjs/c
 import { NextFunction, Request, Response } from 'express';
 import jwt from 'jsonwebtoken';
 
-import envConfig from '~src/config/env.config';
+import envConfig from '../config/env.config';
 import { IUserData } from './user.interface';
 import { UserService } from './user.service';
 

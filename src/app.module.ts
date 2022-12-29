@@ -18,25 +18,28 @@ import { UserModule } from './user/user.module';
     ConfigModule.forRoot({
       isGlobal: true,
       load: [envConfig],
-      // TODO:
-      // validationSchema: Joi.object({
-      //   APP_LOGGER: Joi.string(),
-      //   HTTP_SERVER_PORT: Joi.string(),
-      //   HTTPS_SERVER_PORT: Joi.string(),
-      //   HTTPS_ENABLED: Joi.string(),
-      //   HTTPS_KEY_FILE: Joi.string(),
-      //   HTTPS_CERT_FILE: Joi.string(),
-      //   CORS_ORIGIN_ENABLED: Joi.string(),
-      //   CORS_ORIGIN: Joi.string(),
-      //   POSTGRES_HOST: Joi.string().required(),
-      //   POSTGRES_PORT: Joi.number().required(),
-      //   POSTGRES_DB: Joi.string().required(),
-      //   POSTGRES_USER: Joi.string().required(),
-      //   POSTGRES_PASSWORD: Joi.string().required(),
-      //   POSTGRES_SHOW_DEBUG_SQL: Joi.boolean(),
-      //   JWT_SECRET: Joi.string().required(),
-      //   JWT_EXPIRATION_DAYS: Joi.string().required(),
-      // }),
+      validationSchema: Joi.object({
+        // app
+        APP_LOGGER: Joi.string(),
+        // server
+        HTTPS_ENABLED: Joi.boolean(),
+        HTTP_SERVER_PORT: Joi.number(),
+        HTTPS_SERVER_PORT: Joi.number(),
+        HTTPS_KEY_FILE: Joi.string(),
+        HTTPS_CERT_FILE: Joi.string(),
+        CORS_ORIGIN_ENABLED: Joi.boolean(),
+        CORS_ORIGIN_FQND: Joi.string(),
+        // datalayer
+        POSTGRES_HOST: Joi.string().required(),
+        POSTGRES_PORT: Joi.number().required(),
+        POSTGRES_DB: Joi.string().required(),
+        POSTGRES_USER: Joi.string().required(),
+        POSTGRES_PASSWORD: Joi.string().required(),
+        POSTGRES_SHOW_DEBUG_SQL: Joi.boolean(),
+        // authentication
+        JWT_SECRET: Joi.string().required(),
+        JWT_EXPIRATION_DAYS: Joi.number().required(),
+      }),
     }),
     DatabaseModule,
     // MikroOrmModule.forRoot(),
@@ -52,7 +55,7 @@ import { UserModule } from './user/user.module';
 })
 export class AppModule implements NestModule, OnModuleInit {
 
-  constructor(private readonly orm: MikroORM) {}
+  constructor(private readonly orm: MikroORM) { }
 
   async onModuleInit(): Promise<void> {
     await this.orm.getMigrator().up();

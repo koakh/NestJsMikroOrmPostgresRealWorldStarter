@@ -2,7 +2,7 @@ import { ArrayType, Collection, Entity, EntityDTO, ManyToOne, OneToMany, Primary
 import slug from 'slug';
 import { v4 } from 'uuid';
 
-import { User } from '~src/user/user.entity';
+import { User } from '../user/user.entity';
 import { Comment } from './comment.entity';
 
 @Entity()

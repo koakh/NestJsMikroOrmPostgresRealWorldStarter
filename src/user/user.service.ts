@@ -4,7 +4,7 @@ import { validate } from 'class-validator';
 import crypto from 'crypto';
 import jwt from 'jsonwebtoken';
 
-import envConfig from '~src/config/env.config';
+import envConfig from '../config/env.config';
 import { CreateUserDto, LoginUserDto, UpdateUserDto } from './dto';
 import { User } from './user.entity';
 import { IUserRO } from './user.interface';

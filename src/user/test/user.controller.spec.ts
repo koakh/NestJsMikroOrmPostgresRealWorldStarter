@@ -4,6 +4,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { CreateUserDto, UpdateUserDto } from '../dto';
 import { UserController } from '../user.controller';
 import { UserService } from '../user.service';
+import { mokeUserId } from './constants';
 
 describe('UsersController', () => {
   let controller: UserController;
@@ -87,7 +88,7 @@ describe('UsersController', () => {
   it('should update user and return him', async () => {
     const email = 'testupdated@test.com';
     expect(
-      await controller.update(1, {
+      await controller.update(mokeUserId, {
         email,
         image: 'testupdated.jpg',
         username: 'testupdated',

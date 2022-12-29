@@ -4,9 +4,11 @@ import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import * as fs from 'fs';
 
-import envConfig from '~src/config/env.config';
-import { AppModule } from '~src/app.module';
-import { appConstants as c } from '~src/shared/constants';
+import { AppModule } from './app.module';
+import envConfig from './config/env.config';
+import { appConstants as c } from './shared/constants';
+import { AllExceptionsFilter } from './shared/filters/all-exceptions.filter';
+import { HttpExceptionFilter } from './shared/filters/http-exception.filter';
 
 // this helper config must be here, before be used in NestFactory.create
 export const loggerConfig: false | LoggerService | LogLevel[] = (envConfig().app.logger.split(',') as false | LoggerService | LogLevel[]);
@@ -28,6 +30,7 @@ const getHttpsOptions = () => {
 
 const context = 'NestApplication';
 async function bootstrap() {
+  // create nestApp
   const app = await NestFactory.create(AppModule, {
     httpsOptions: getHttpsOptions(),
     logger: loggerConfig,
@@ -44,26 +47,21 @@ async function bootstrap() {
   const httpsCertFile = configService.get('server.httpsCertFile');
 
   // global prefix  
-  app.setGlobalPrefix('v1');
-
+  app.setGlobalPrefix('api');
   // rest server cors, before any middleware
   let corsOptions: { origin?: string[] | boolean, credentials: boolean } = { credentials: true, origin: true };
   let corsMessage = 'disabled';
+
   // inject origin if corsOriginEnabled
   if (corsOriginEnabled) {
     corsOptions = { ...corsOptions, origin: corsOriginFqnd };
     corsMessage = `authorized domains: [${corsOriginFqnd.join(', ')}]`;
   };
   app.enableCors(corsOptions);
-  // pipes middleware
-  // whitelist: any properties not declared in their DTO classes will be removed returned object
-  // transform: automatically transform payloads to be objects typed according to their DTO classes
   app.useGlobalPipes(new ValidationPipe({ transform: true, whitelist: true }));
-  // TODO:
-  // global-scoped filter
-  // app.useGlobalFilters(new HttpExceptionFilter(), new AllExceptionsFilter());
+  app.useGlobalFilters(new HttpExceptionFilter(), new AllExceptionsFilter());
 
-  // swagger
+  // swagger/docs
   const options = new DocumentBuilder()
     .setTitle('NestJS Realworld Example App')
     .setDescription('The Realworld API description')

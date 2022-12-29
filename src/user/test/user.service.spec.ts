@@ -3,6 +3,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { CreateUserDto } from '../dto';
 import { UserRepository } from '../user.repository';
 import { UserService } from '../user.service';
+import { mokeUserId } from './constants';
 
 describe('UsersService', () => {
   let service: UserService;
@@ -102,7 +103,7 @@ describe('UsersService', () => {
     });
   });
   it('should return user by id', async () => {
-    expect(await service.findById(1)).toEqual({
+    expect(await service.findById(mokeUserId)).toEqual({
       user: {
         email: 'test@test.com',
         bio: 'test',

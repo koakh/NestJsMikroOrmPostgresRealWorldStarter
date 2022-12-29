@@ -23,16 +23,16 @@ services:
     ports:
       - 5480:80
 
-  # app:
-  #   image: koakh-nestjs-realworld-example-app:latest
-  #   container_name: koakh-nestjs-realworld-example-app
-  #   restart: unless-stopped
-  #   build:
-  #     context: .
-  #     dockerfile: Dockerfile
-  #   depends_on:
-  #     - db
-  #   env_file:
-  #     - docker.env
-  #   ports:
-  #     - 8443:8443
+  app:
+    image: koakh-nestjs-realworld-example-app:latest
+    container_name: koakh-nestjs-realworld-example-app
+    restart: unless-stopped
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - db
+    env_file:
+      - docker.env
+    ports:
+      - 8443:8443
