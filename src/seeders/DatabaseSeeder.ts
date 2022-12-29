@@ -10,8 +10,6 @@ export class DatabaseSeeder extends Seeder {
       username: 'koakh',
       email: 'mail@koakh.com',
       password: '12345678',
-      bio: '',
-      image: ''
     });
     em.persist(author);
   }

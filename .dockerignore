@@ -2,15 +2,16 @@
 **
 
 # Allow files and directories
+!/usr/**
 !/assets/**
 !/config/**
 !/src/**
 !/.prod.env
-!/bundle-app.sh
 !/tsconfig.build.json
 !/tsconfig.json
 !/package.json
 !/package-lock.json
+!/wait-for-it.sh
 
 # Ignore unnecessary files inside allowed directories
 # This should go after the allowed directories
@@ -18,9 +19,7 @@
 **/*.log
 **/.DS_Store
 **/Thumbs.db
-uploads
-.bak
-node_modules
 .git
-dist
-src
+.bak
+uploads
+node_modules

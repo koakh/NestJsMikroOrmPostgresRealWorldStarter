@@ -9,6 +9,8 @@ export class TestSeeder extends Seeder {
       username: 'John Snow',
       email: 'snow@wall.st',
       password: 'snow@wall.st',
+      bio : '',
+      image : '',
     });
     em.persist(author);
   }

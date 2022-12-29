@@ -17,6 +17,9 @@ ENV NODE_ENV=${NODE_ENV}
 
 WORKDIR /usr/src/app
 
+RUN apk update && apk add --no-cache coreutils bash
+
+COPY wait-for-it.sh /
 COPY package*.json ./
 
 RUN npm install --only=production
@@ -25,4 +28,5 @@ COPY . .
 
 COPY --from=development /usr/src/app/dist ./dist
 
-CMD ["node", "dist/main"]
+# CMD ["node", "dist/main"]
+CMD ["/wait-for-it.sh", "db:5432", "--", "node", "dist/main"]

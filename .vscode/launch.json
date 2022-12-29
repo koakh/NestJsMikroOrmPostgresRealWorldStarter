@@ -6,26 +6,15 @@
   "configurations": [
     {
       "type": "node",
-      "name": "Attach",
-      "port": 9229,
       "request": "attach",
-      "skipFiles": [
-        "<node_internals>/**"
-      ],
+      "name": "Attach to Remote C3",
+      "address": "localhost",
+      "port": 9229,
+      "localRoot": "${workspaceFolder}",
+      "remoteRoot": "/home/mario/Development/Node/@NestJsStarters/NestJsMikroOrmPostgresRealWorldStarter",
+      "sourceMaps": true,
+      "trace" : true,
       "restart": true
-    },    
-    {
-      "type": "node",
-      "request": "launch",
-      "name": "Launch Program",
-      "skipFiles": [
-        "<node_internals>/**"
-      ],
-      "program": "${workspaceFolder}/src/main.ts",
-      "preLaunchTask": "tsc: build - tsconfig.json",
-      "outFiles": [
-        "${workspaceFolder}/dist/**/*.js"
-      ]
     }
   ]
 }

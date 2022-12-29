@@ -4,18 +4,31 @@ Project:
     ✔ id in uuid format @done(22-12-27 12:26)
     ✔ @critical refactor whole config @done(22-12-28 12:53)
     ☐ @critical config service like we have in backend with validation
-  ✔ docker file docker compose with configService / env variables @done(22-12-28 10:46)
+  ✔ Docker @done(22-12-29 11:36)
+    ✔ docker file docker compose with configService / env variables @done(22-12-28 10:46)
+    ✔ wait-for-it to wait for postgres db @done(22-12-29 11:10)
+      ✔ @critical @done(22-12-29 11:11)
+        koakh-nestjs-realworld-example-app  | env: can't execute 'bash': No such file or directory
+        comes from
+        #!/usr/bin/env bash
   ✔ NestFactory.create opions with httpsOptions and logger @done(22-12-28 12:42)
-  ☐ replace all imports with `~src` alias
-  ☐ main bootstrap logger, filters etc
+  ✔ replace all imports with `~src` alias @done(22-12-28 15:12)
+  ☐ stuff from c3-backend
+    ☐ main bootstrap logger, filters etc
+    ✔ logger on boot @done(22-12-28 15:12)
+    ✔ certificates @done(22-12-28 15:12)
   ☐ @low change all models to {name}Entity
   ☐ remove authentication and use cookie authentication from NestJsMikroOrmWanagoTutorial
-  ☐ debug configuration
+  ✔ debug configuration @done(22-12-29 11:36)
   ☐ auth
-    ☐ bcrypt
-    ☐ src/config.ts with JWT_SECRET and not SECRET
-  ☐ stuff from backend
-    ☐ logger on boot
-    ☐ certificates
+    ☐ @low bcrypt
+    ✔ src/config.ts with JWT_SECRET and not SECRET @done(22-12-29 10:45)
   ☐ remove
     ☐ e2e
+
+
+
+today
+  wait-for-it to wait for postgres db for alpine images
+  finish alpine docker image and docker-compose
+  configure debugger and remote debugger

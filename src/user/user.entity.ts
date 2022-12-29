@@ -50,6 +50,7 @@ export class User {
 
   toJSON(user?: User) {
     const o = wrap<User>(this).toObject() as UserDTO;
+    // else default to no image
     o.image = this.image || 'https://static.productionready.io/images/smiley-cyrus.jpg';
     o.following = user && user.followers.isInitialized() ? user.followers.contains(this) : false;
 

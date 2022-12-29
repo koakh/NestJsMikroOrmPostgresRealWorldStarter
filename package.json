@@ -17,14 +17,17 @@
     "test:coverage": "jest --config=jest.json --coverage --coverageDirectory=coverage",
     "test:e2e": "APIURL=http://localhost:3000/api ./e2e/run-api-tests.sh",
     "package:upgrade": "pnpm up",
-    "teardown": "docker-compose down --volumes --remove-orphans && rm dist/ -R | true && docker-compose up -d",
-    "migration:create": "rm src/migrations -R || true && npx mikro-orm migration:create",
-    "migration:seed": "npx mikro-orm migration:fresh --seed",
     "docker:build": "docker build . -t koakh-nestjs-realworld-example-app:latest",
+    "docker:build:nocache": "docker build . -t koakh-nestjs-realworld-example-app:latest --no-cache",
     "docker:run": "docker run -it koakh-nestjs-realworld-example-app:latest sh",
-    "docker:up": "docker-compose up -d",
+    "docker:teardown": "docker-compose down --volumes --remove-orphans && rm dist/ -R | true",
+    "docker:up": "docker-compose up -d && pnpm docker:logs",
     "docker:down": "docker-compose down --volumes --remove-orphans",
-    "docker:logs": "docker-compose logs -f"
+    "docker:logs": "docker-compose logs -f app",
+    "schema:drop": "npx mikro-orm schema:drop --dump",
+    "migration:create": "rm dist/ -R || true && rm src/migrations -R || true && npx mikro-orm migration:create",
+    "migration:up": "npx mikro-orm migration:up",
+    "migration:seed": "npx mikro-orm migration:fresh --seed"
   },
   "repository": {
     "type": "git",
