@@ -38,4 +38,4 @@ today
 - rollback tsconfig import alias ~scr, gives problems with test suite
 - fixed all tests and e2e tests
 - add all api requests to client.http
-- configure swagger and missing paremeters and body, that prevent submit objects etc
+- configure swagger and missing parameters and body, that prevent submit objects etc
