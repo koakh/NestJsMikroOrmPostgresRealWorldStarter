@@ -15,7 +15,7 @@
     "test": "jest --config=jest.json",
     "test:watch": "jest --watch --config=jest.json",
     "test:coverage": "jest --config=jest.json --coverage --coverageDirectory=coverage",
-    "test:e2e": "APIURL=http://localhost:3000/api ./e2e/run-api-tests.sh",
+    "test:e2e": "APIURL=http://koakh-laptop:3000/api ./e2e/run-api-tests.sh",
     "package:upgrade": "pnpm up",
     "docker:build": "docker build . -t koakh-nestjs-realworld-example-app:latest",
     "docker:build:nocache": "docker build . -t koakh-nestjs-realworld-example-app:latest --no-cache",

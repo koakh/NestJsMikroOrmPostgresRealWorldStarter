@@ -22,8 +22,8 @@ Project:
     ☐ @low remove authentication and use cookie authentication from NestJsMikroOrmWanagoTutorial
     ☐ @low bcrypt
   ✔ src/config.ts with JWT_SECRET and not SECRET @done(22-12-29 10:45)
-  ☐ swagger
-    ☐ CreateCommentDto keeps with empty properties
+  ✔ swagger @done(23-01-03 12:33)
+    ✔ Fix CreateCommentDto keeps with empty properties @done(23-01-03 12:33)
   ☐ test
     ☐ test ok
     ☐ test:e2e ko some assertion errors but all tests pass
