@@ -3,7 +3,7 @@ Project:
     ✔ env variables @done(22-12-27 12:01)
     ✔ id in uuid format @done(22-12-27 12:26)
     ✔ @critical refactor whole config @done(22-12-28 12:53)
-    ☐ @critical config service like we have in backend with validation
+    ✔ @critical config service like we have in backend with validation @done(23-01-03 12:18)
   ✔ Docker @done(22-12-29 11:36)
     ✔ docker file docker compose with configService / env variables @done(22-12-28 10:46)
     ✔ wait-for-it to wait for postgres db @done(22-12-29 11:10)
@@ -18,10 +18,12 @@ Project:
     ✔ logger on boot @done(22-12-28 15:12)
     ✔ certificates @done(22-12-28 15:12)
     ✔ debug configuration @done(22-12-29 11:36)
-    ☐ auth
+  ☐ auth
     ☐ @low remove authentication and use cookie authentication from NestJsMikroOrmWanagoTutorial
     ☐ @low bcrypt
-    ✔ src/config.ts with JWT_SECRET and not SECRET @done(22-12-29 10:45)
+  ✔ src/config.ts with JWT_SECRET and not SECRET @done(22-12-29 10:45)
+  ☐ swagger
+    ☐ CreateCommentDto keeps with empty properties
   ☐ test
     ☐ test ok
     ☐ test:e2e ko some assertion errors but all tests pass

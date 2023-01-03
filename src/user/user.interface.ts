@@ -2,7 +2,7 @@ export interface IUserData {
   bio: string;
   email: string;
   image?: string;
-  token: string;
+  accessToken: string;
   username: string;
 }
 

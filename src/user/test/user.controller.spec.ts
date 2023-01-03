@@ -15,7 +15,7 @@ describe('UsersController', () => {
         bio: 'testbio',
         email,
         image: 'test.jpg',
-        token: 'exampleoftesttoken',
+        accessToken: 'exampleoftesttoken',
         username: 'testusername',
       };
     }),
@@ -24,7 +24,7 @@ describe('UsersController', () => {
         bio: 'testbio',
         email: dto.email,
         image: 'test.jpg',
-        token: 'exampleoftesttoken',
+        accessToken: 'exampleoftesttoken',
         username: dto.username,
       };
     }),
@@ -33,7 +33,7 @@ describe('UsersController', () => {
         bio: dto.bio,
         email: dto.email,
         image: dto.image,
-        token: 'exampleoftesttoken',
+        accessToken: 'exampleoftesttoken',
         username: dto.username,
       };
     }),
@@ -65,7 +65,7 @@ describe('UsersController', () => {
       bio: 'testbio',
       email,
       image: 'test.jpg',
-      token: 'exampleoftesttoken',
+      accessToken: 'exampleoftesttoken',
       username: 'testusername',
     });
   });
@@ -81,7 +81,7 @@ describe('UsersController', () => {
       bio: 'testbio',
       email,
       image: 'test.jpg',
-      token: 'exampleoftesttoken',
+      accessToken: 'exampleoftesttoken',
       username: 'test',
     });
   });
@@ -98,7 +98,7 @@ describe('UsersController', () => {
       bio: 'testupdated',
       email,
       image: 'testupdated.jpg',
-      token: 'exampleoftesttoken',
+      accessToken: 'exampleoftesttoken',
       username: 'testupdated',
     });
   });

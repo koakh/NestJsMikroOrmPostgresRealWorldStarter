@@ -20,13 +20,13 @@ export class UserController {
   }
 
   @Put('user')
-  async update(@User('id') userId: string, @Body('user') userData: UpdateUserDto) {
+  async update(@User('id') userId: string, @Body() userData: UpdateUserDto) {
     return this.userService.update(userId, userData);
   }
 
   @UsePipes(new ValidationPipe())
   @Post('users')
-  async create(@Body('user') userData: CreateUserDto) {
+  async create(@Body() userData: CreateUserDto) {
     return this.userService.create(userData);
   }
 
@@ -37,16 +37,16 @@ export class UserController {
 
   @UsePipes(new ValidationPipe())
   @Post('users/login')
-  async login(@Body('user') loginUserDto: LoginUserDto): Promise<IUserRO> {
+  async login(@Body() loginUserDto: LoginUserDto): Promise<IUserRO> {
     const foundUser = await this.userService.findOne(loginUserDto);
 
     const errors = { User: ' not found' };
     if (!foundUser) {
       throw new HttpException({ errors }, 401);
     }
-    const token = await this.userService.generateJWT(foundUser);
+    const accessToken = await this.userService.generateJWT(foundUser);
     const { email, username, bio, image } = foundUser;
-    const user = { email, token, username, bio, image };
+    const user = { email, accessToken, username, bio, image };
     return { user };
   }
 }

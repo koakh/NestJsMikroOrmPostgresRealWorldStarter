@@ -42,7 +42,7 @@ export class ArticleController {
   @ApiResponse({ status: 201, description: 'The article has been successfully created.' })
   @ApiResponse({ status: 403, description: 'Forbidden.' })
   @Post()
-  async create(@User('id') userId: string, @Body('article') articleData: CreateArticleDto) {
+  async create(@User('id') userId: string, @Body() articleData: CreateArticleDto) {
     return this.articleService.create(userId, articleData);
   }
 
@@ -50,7 +50,7 @@ export class ArticleController {
   @ApiResponse({ status: 201, description: 'The article has been successfully updated.' })
   @ApiResponse({ status: 403, description: 'Forbidden.' })
   @Put(':slug')
-  async update(@User('id') userId: string, @Param() params, @Body('article') articleData: CreateArticleDto) {
+  async update(@User('id') userId: string, @Param() params, @Body() articleData: CreateArticleDto) {
     // Todo: update slug also when title gets changed
     return this.articleService.update(userId, params.slug, articleData);
   }
@@ -67,7 +67,7 @@ export class ArticleController {
   @ApiResponse({ status: 201, description: 'The comment has been successfully created.' })
   @ApiResponse({ status: 403, description: 'Forbidden.' })
   @Post(':slug/comments')
-  async createComment(@User('id') userId: string, @Param('slug') slug, @Body('comment') commentData: CreateCommentDto) {
+  async createComment(@User('id') userId: string, @Param('slug') slug, @Body() commentData: CreateCommentDto) {
     return this.articleService.addComment(userId, slug, commentData);
   }
 

@@ -102,7 +102,7 @@ export class UserService {
       bio: user.bio,
       email: user.email,
       image: user.image,
-      token: this.generateJWT(user),
+      accessToken: this.generateJWT(user),
       username: user.username,
     };
 

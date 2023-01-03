@@ -97,7 +97,7 @@ describe('UsersService', () => {
         bio: '',
         email: 'test@test.com',
         image: '',
-        token: expect.any(String),
+        accessToken: expect.any(String),
         username: 'test1',
       },
     });
@@ -108,7 +108,7 @@ describe('UsersService', () => {
         email: 'test@test.com',
         bio: 'test',
         image: 'test.jpg',
-        token: expect.any(String),
+        accessToken: expect.any(String),
         username: 'test',
       },
     });
@@ -119,7 +119,7 @@ describe('UsersService', () => {
         bio: 'test',
         email: { email: 'test@test.com' },
         image: 'test.jpg',
-        token: expect.any(String),
+        accessToken: expect.any(String),
         username: 'test',
       },
     });
