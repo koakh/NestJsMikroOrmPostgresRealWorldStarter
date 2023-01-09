@@ -6,7 +6,6 @@
 @contentType = application/json
 
 @userLoginEmail = user@example.com
-@adminLoginEmail = admin@example.com
 @userLoginPassword = 12345678
 @slug = article-1-b10yaa
 
@@ -23,8 +22,19 @@ POST {{uri}}/users/login HTTP/1.1
 Content-Type: {{contentType}}
 
 {
+  "username": "admin",
+  "email": "admin@example.com",
+  "password": "{{userLoginPassword}}"
+}
+
+### createUser
+// @name createUser
+
+POST {{uri}}/users HTTP/1.1
+Content-Type: {{contentType}}
+
+{
   "email": "{{userLoginEmail}}",
-  // "email": "{{adminLoginEmail}}",
   "password": "{{userLoginPassword}}"
 }
 

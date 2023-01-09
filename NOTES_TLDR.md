@@ -14,7 +14,7 @@ $ curl -k --request POST \
   --url https://127.0.0.1:8443/api/users/login \
   --header 'content-type: application/json' \
   --header 'user-agent: vscode-restclient' \
-  --data '{"email": "mail@koakh.com","password": "12345678"}' \
+  --data '{"email": "user@example.com","password": "12345678"}' \
   | jq
 ```
 
