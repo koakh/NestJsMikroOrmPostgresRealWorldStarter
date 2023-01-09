@@ -1,6 +1,9 @@
-import { Body, Controller, Delete, Get, HttpException, Param, Post, Put, UsePipes } from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpException, Param, Post, Put, UseGuards, UsePipes } from '@nestjs/common';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 
+import { Roles } from '../shared/decorators';
+import { Roles as UserRoles } from '../shared/enums';
+import { RolesAuthGuard } from '../shared/guards';
 import { ValidationPipe } from '../shared/pipes/validation.pipe';
 import { CreateUserDto, LoginUserDto, UpdateUserDto } from './dto';
 import { User } from './user.decorator';
@@ -23,6 +26,8 @@ export class UserController {
     return this.userService.update(userId, userData);
   }
 
+  @Roles(UserRoles.ROLE_ADMIN)
+  @UseGuards(RolesAuthGuard)
   @UsePipes(new ValidationPipe())
   @Post('users')
   async create(@Body() userData: CreateUserDto) {

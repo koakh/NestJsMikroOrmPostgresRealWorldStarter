@@ -1,10 +1,18 @@
-import { Collection, Entity, EntityDTO, EntityRepositoryType, ManyToMany, OneToMany, PrimaryKey, Property, wrap } from '@mikro-orm/core';
+import { Collection, Entity, EntityDTO, EntityRepositoryType, Enum, ManyToMany, OneToMany, PrimaryKey, Property, wrap } from '@mikro-orm/core';
 import { IsEmail } from 'class-validator';
 import crypto from 'crypto';
 import { v4 } from 'uuid';
 
 import { Article } from '../article/article.entity';
 import { UserRepository } from './user.repository';
+// import { Roles as UserRoles } from '../shared/enums';
+
+//  export * from '../shared/enums';
+
+enum Role {
+  User = 'ROLE_USER',
+  Admin = 'ROLE_ADMIN',
+}
 
 @Entity({ customRepository: () => UserRepository })
 export class User {
@@ -41,6 +49,9 @@ export class User {
 
   @OneToMany(() => Article, article => article.author, { hidden: true })
   articles = new Collection<Article>(this);
+
+  @Enum({ default: [Role.User] })
+  roles = [Role.User];
 
   constructor(username: string, email: string, password: string) {
     this.username = username;
