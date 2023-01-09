@@ -1,8 +1,7 @@
 import type { EntityManager } from '@mikro-orm/core';
 import { Seeder } from '@mikro-orm/seeder';
 
-import { Roles as UserRoles } from '../shared/enums';
-import { User } from '../user/user.entity';
+import { Role, User } from '../user/user.entity';
 
 export class DatabaseSeeder extends Seeder {
 
@@ -18,7 +17,7 @@ export class DatabaseSeeder extends Seeder {
       username: 'admin',
       email: 'admin@example.com',
       password: '12345678',
-      roles: [UserRoles.ROLE_ADMIN, UserRoles.ROLE_USER]
+      roles: [Role.User, Role.Admin]
     });
     em.persist(admin);
   }

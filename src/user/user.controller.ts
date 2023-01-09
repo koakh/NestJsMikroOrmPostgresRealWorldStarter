@@ -1,9 +1,7 @@
-import { Body, Controller, Delete, Get, HttpException, Param, Post, Put, UseGuards, UsePipes } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put, UsePipes, HttpStatus } from '@nestjs/common';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 
-import { Roles } from '../shared/decorators';
-import { Roles as UserRoles } from '../shared/enums';
-import { RolesAuthGuard } from '../shared/guards';
+import { CustomHttpException } from '../shared/exceptions';
 import { ValidationPipe } from '../shared/pipes/validation.pipe';
 import { CreateUserDto, LoginUserDto, UpdateUserDto } from './dto';
 import { User } from './user.decorator';
@@ -26,8 +24,6 @@ export class UserController {
     return this.userService.update(userId, userData);
   }
 
-  @Roles(UserRoles.ROLE_ADMIN)
-  @UseGuards(RolesAuthGuard)
   @UsePipes(new ValidationPipe())
   @Post('users')
   async create(@Body() userData: CreateUserDto) {
@@ -44,13 +40,12 @@ export class UserController {
   async login(@Body() loginUserDto: LoginUserDto): Promise<IUserRO> {
     const foundUser = await this.userService.findOne(loginUserDto);
 
-    const errors = { User: ' not found' };
     if (!foundUser) {
-      throw new HttpException({ errors }, 401);
+      throw new CustomHttpException(HttpStatus.UNAUTHORIZED, { errorMessage: 'Unauthorized' });
     }
     const accessToken = await this.userService.generateJWT(foundUser);
-    const { email, username, bio, image } = foundUser;
-    const user = { email, accessToken, username, bio, image };
+    const { email, username, roles, bio, image } = foundUser;
+    const user = { accessToken, email, username, roles, bio, image };
     return { user };
   }
 }

@@ -5,13 +5,10 @@ import { v4 } from 'uuid';
 
 import { Article } from '../article/article.entity';
 import { UserRepository } from './user.repository';
-// import { Roles as UserRoles } from '../shared/enums';
 
-//  export * from '../shared/enums';
-
-enum Role {
-  User = 'ROLE_USER',
-  Admin = 'ROLE_ADMIN',
+export enum Role {
+  User = 'user',
+  Admin = 'admin',
 }
 
 @Entity({ customRepository: () => UserRepository })
@@ -53,10 +50,12 @@ export class User {
   @Enum({ default: [Role.User] })
   roles = [Role.User];
 
-  constructor(username: string, email: string, password: string) {
+  constructor(username: string, email: string, password: string, roles?: Role[]) {
     this.username = username;
     this.email = email;
     this.password = crypto.createHmac('sha256', password).digest('hex');
+    // default
+    this.roles = roles ? roles : [Role.User];
   }
 
   toJSON(user?: User) {

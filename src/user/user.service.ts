@@ -104,6 +104,7 @@ export class UserService {
       image: user.image,
       accessToken: this.generateJWT(user),
       username: user.username,
+      roles: user.roles,
     };
 
     return { user: userRO };

@@ -1,11 +1,11 @@
 import { Migration } from '@mikro-orm/migrations';
 
-export class Migration20230109123806 extends Migration {
+export class Migration20230109170703 extends Migration {
 
   async up(): Promise<void> {
     this.addSql('create table "tag" ("id" serial primary key, "tag" varchar(255) not null);');
 
-    this.addSql('create table "user" ("id" varchar(255) not null, "username" varchar(255) not null, "email" varchar(255) not null, "bio" varchar(255) not null, "image" varchar(255) not null, "password" varchar(255) not null, "roles" text[] not null default \'{ROLE_USER}\', constraint "user_pkey" primary key ("id"));');
+    this.addSql('create table "user" ("id" varchar(255) not null, "username" varchar(255) not null, "email" varchar(255) not null, "bio" varchar(255) not null, "image" varchar(255) not null, "password" varchar(255) not null, "roles" text[] not null default \'{user}\', constraint "user_pkey" primary key ("id"));');
 
     this.addSql('create table "article" ("id" varchar(255) not null, "slug" varchar(255) not null, "title" varchar(255) not null, "description" varchar(255) not null, "body" varchar(255) not null, "created_at" timestamptz(0) not null, "updated_at" timestamptz(0) not null, "tag_list" text[] not null, "author_id" varchar(255) not null, "favorites_count" int not null, constraint "article_pkey" primary key ("id"));');
 

@@ -104,10 +104,10 @@
           "autoincrement": false,
           "primary": false,
           "nullable": false,
-          "default": "'{ROLE_USER}'",
+          "default": "'{user}'",
           "enumItems": [
-            "ROLE_USER",
-            "ROLE_ADMIN"
+            "user",
+            "admin"
           ],
           "mappedType": "array"
         }
