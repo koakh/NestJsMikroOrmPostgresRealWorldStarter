@@ -3,7 +3,7 @@ version: '2'
 services:
   db:
     image: postgres:13.1-alpine
-    container_name: nestjs-realworld-example-db
+    container_name: c3-customers-db
     restart: unless-stopped
     env_file:
       - docker.env
@@ -14,7 +14,7 @@ services:
 
   pgadmin:
     image: dpage/pgadmin4
-    container_name: nestjs-realworld-example-pgadmin
+    container_name: c3-customers-pgadmin
     restart: unless-stopped
     depends_on:
       - db
@@ -23,16 +23,16 @@ services:
     ports:
       - 5480:80
 
-  app:
-    image: koakh-nestjs-realworld-example-app:latest
-    container_name: koakh-nestjs-realworld-example-app
-    restart: unless-stopped
-    build:
-      context: .
-      dockerfile: Dockerfile
-    depends_on:
-      - db
-    env_file:
-      - docker.env
-    ports:
-      - 8443:8443
+  # app:
+  #   image: c3-customers-backend:latest
+  #   container_name: c3-customers-backend
+  #   restart: unless-stopped
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile
+  #   depends_on:
+  #     - db
+  #   env_file:
+  #     - docker.env
+  #   ports:
+  #     - 8443:8443

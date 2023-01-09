@@ -7,7 +7,6 @@ import { TagService } from './tag.service';
 @ApiTags('tags')
 @Controller('tags')
 export class TagController {
-
   constructor(private readonly tagService: TagService) { }
 
   @Get()

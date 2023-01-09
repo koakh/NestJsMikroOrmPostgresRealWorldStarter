@@ -8,7 +8,7 @@ Project:
     ✔ docker file docker compose with configService / env variables @done(22-12-28 10:46)
     ✔ wait-for-it to wait for postgres db @done(22-12-29 11:10)
       ✔ @critical @done(22-12-29 11:11)
-        koakh-nestjs-realworld-example-app  | env: can't execute 'bash': No such file or directory
+        c3-customers-backend  | env: can't execute 'bash': No such file or directory
         comes from
         #!/usr/bin/env bash
   ✔ NestFactory.create opions with httpsOptions and logger @done(22-12-28 12:42)

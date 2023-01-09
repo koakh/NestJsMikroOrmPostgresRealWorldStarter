@@ -1,7 +1,7 @@
 {
-  "name": "nestjs-realworld-example-app",
+  "name": "c3-customers-backend",
   "version": "1.0.0",
-  "description": "NestJS + MikroORM realworld API example (MySQL)",
+  "description": "c3 customers backend server api",
   "main": "index.js",
   "scripts": {
     "prebuild": "rimraf dist",
@@ -17,11 +17,11 @@
     "test:coverage": "jest --config=jest.json --coverage --coverageDirectory=coverage",
     "test:e2e": "APIURL=http://koakh-laptop:3000/api ./e2e/run-api-tests.sh",
     "package:upgrade": "pnpm up",
-    "docker:build": "docker build . -t koakh-nestjs-realworld-example-app:latest",
-    "docker:build:nocache": "docker build . -t koakh-nestjs-realworld-example-app:latest --no-cache",
-    "docker:run": "docker run -it koakh-nestjs-realworld-example-app:latest sh",
-    "docker:teardown": "docker-compose down --volumes --remove-orphans && rm dist/ -R | true",
-    "docker:up": "docker-compose up -d && pnpm docker:logs",
+    "docker:build": "docker build . -t c3-customers-backend:latest",
+    "docker:build:nocache": "docker build . -t c3-customers-backend:latest --no-cache",
+    "docker:run": "docker run -it c3-customers-backend:latest sh",
+    "docker:teardown": "docker-compose down --volumes --remove-orphans && rm dist/ -R || true",
+    "docker:up": "docker-compose up -d",
     "docker:down": "docker-compose down --volumes --remove-orphans",
     "docker:logs": "docker-compose logs -f app",
     "schema:drop": "npx mikro-orm schema:drop --dump",
@@ -31,14 +31,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mikro-orm/nestjs-realworld-example-app.git"
+    "url": "git+https://github.com/mikro-orm/c3-customers-backend.git"
   },
   "author": "banan23@gmail.com",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/mikro-orm/nestjs-realworld-example-app/issues"
+    "url": "https://github.com/mikro-orm/c3-customers-backend/issues"
   },
-  "homepage": "https://github.com/mikro-orm/nestjs-realworld-example-app#readme",
+  "homepage": "https://github.com/mikro-orm/c3-customers-backend#readme",
   "renovate": {
     "extends": [
       "config:base",

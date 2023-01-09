@@ -1,5 +1,5 @@
-// @host = 127.0.0.1
-@host = 192.168.1.103
+@host = 127.0.0.1
+// @host = 192.168.1.103
 // localhost: 3000 | localhost https: 3443 | docker: 8443 | 
 @port = 8443
 @uri = https://{{host}}:{{port}}/api
@@ -30,7 +30,7 @@ Content-Type: {{contentType}}
 
 ### createArticle
 // @name createArticle
-@authToken = {{userLogin.response.body.$.user.accessToken}}
+// @authToken = {{userLogin.response.body.$.user.accessToken}}
 
 POST {{uri}}/articles HTTP/1.1
 Content-Type: {{contentType}}

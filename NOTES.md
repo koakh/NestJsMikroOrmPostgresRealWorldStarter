@@ -1,7 +1,7 @@
 # NOTES
 
 - [Using MikroORM with NestJS framework | MikroORM](https://mikro-orm.io/docs/usage-with-nestjs)
-- [GitHub - mikro-orm/nestjs-realworld-example-app: Example real world backend API built with NestJS + MikroORM](https://github.com/mikro-orm/nestjs-realworld-example-app)
+- [GitHub - mikro-orm/c3-customers-backend: Example real world backend API built with NestJS + MikroORM](https://github.com/mikro-orm/c3-customers-backend)
 
 ## Init Project
 
@@ -136,7 +136,7 @@ $ curl -s --request POST \
 
 ## Build and Run Image
 
-uncomment `nestjs-realworld-example-app` service on `docker-compose.yml`
+uncomment `c3-customers-backend` service on `docker-compose.yml`
 
 ## Problems
 

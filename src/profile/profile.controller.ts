@@ -9,7 +9,6 @@ import { ProfileService } from './profile.service';
 @ApiTags('profiles')
 @Controller('profiles')
 export class ProfileController {
-
   constructor(private readonly profileService: ProfileService) {}
 
   @Get(':username')
