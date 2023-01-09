@@ -10,7 +10,6 @@ import { CreateArticleDto, CreateCommentDto } from './dto';
 @ApiTags('articles')
 @Controller('articles')
 export class ArticleController {
-
   constructor(private readonly articleService: ArticleService) {}
 
   @ApiOperation({ summary: 'Get all articles' })

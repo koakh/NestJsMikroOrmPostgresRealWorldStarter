@@ -10,25 +10,29 @@ $ pnpm docker:up
 $ pnpm migration:create
 $ pnpm migration:seed
 
-$ curl --request POST \
-  --url https://192.168.1.103:3443/v1/users/login \
+$ curl -k --request POST \
+  --url https://127.0.0.1:8443/api/users/login \
   --header 'content-type: application/json' \
   --header 'user-agent: vscode-restclient' \
-  --data '{"user": {"email": "mail@koakh.com","password": "12345678"}}'
+  --data '{"email": "mail@koakh.com","password": "12345678"}' \
+  | jq
 ```
 
 ## Run in Debug Mode
 
-with commented docker-composer `app`
+with commented docker-composer `app`, optionally can leave `app` section uncomment bu beware to not use same port, always is better to don't have it running to prevent work with wrong service port
 
 ```shell
+# optional, run only if don't have db ready
 $ pnpm docker:teardown
 $ pnpm docker:up
 $ pnpm migration:create
 $ pnpm migration:seed
+# run debug mode
+$ pnpm docker:up
 $ pnpm start:debug
 ```
 
 add breakpoint to `@Post('users/login')` and launch debugger
 
-now send above curl
+now send above curl, or use rest client

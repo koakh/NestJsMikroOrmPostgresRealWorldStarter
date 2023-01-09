@@ -20,7 +20,7 @@
     "docker:build": "docker build . -t koakh-nestjs-realworld-example-app:latest",
     "docker:build:nocache": "docker build . -t koakh-nestjs-realworld-example-app:latest --no-cache",
     "docker:run": "docker run -it koakh-nestjs-realworld-example-app:latest sh",
-    "docker:teardown": "docker-compose down --volumes --remove-orphans && rm dist/ -R | true",
+    "docker:teardown": "docker-compose down --volumes --remove-orphans && rm dist/ -R || true",
     "docker:up": "docker-compose up -d && pnpm docker:logs",
     "docker:down": "docker-compose down --volumes --remove-orphans",
     "docker:logs": "docker-compose logs -f app",

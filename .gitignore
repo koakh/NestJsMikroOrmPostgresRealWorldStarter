@@ -18,7 +18,7 @@ node_modules
 .idea
 
 #config files
-src/mikro-orm.config.ts
+# src/mikro-orm.config.ts
 src/config.ts
 
 # code testing coverage
