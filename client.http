@@ -6,6 +6,7 @@
 @contentType = application/json
 
 @userLoginEmail = user@example.com
+@adminLoginEmail = admin@example.com
 @userLoginPassword = 12345678
 @slug = article-1-b10yaa
 
@@ -18,24 +19,30 @@ Content-Type: {{contentType}}
 ### userLogin
 // @name userLogin
 
-POST {{uri}}/users/login HTTP/1.1
+POST {{uri}}/user/login HTTP/1.1
 Content-Type: {{contentType}}
 
 {
-  "username": "admin",
-  "email": "admin@example.com",
+  "email": "{{adminLoginEmail}}",
   "password": "{{userLoginPassword}}"
 }
 
 ### createUser
 // @name createUser
+@authToken = {{userLogin.response.body.$.user.accessToken}}
 
-POST {{uri}}/users HTTP/1.1
+POST {{uri}}/user HTTP/1.1
 Content-Type: {{contentType}}
+Authorization: Bearer {{authToken}}
 
 {
-  "email": "{{userLoginEmail}}",
-  "password": "{{userLoginPassword}}"
+  "username": "jomi",
+  "email": "jomi@koakh.com",
+  "password": "12345678"
+  // "roles": [
+  //   "admin",
+  //   "user"
+  // ]
 }
 
 // articles
