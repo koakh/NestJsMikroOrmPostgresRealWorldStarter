@@ -3,7 +3,7 @@ version: '2'
 services:
   db:
     image: postgres:13.1-alpine
-    container_name: c3-customers-db
+    container_name: real-world-starter-db
     restart: unless-stopped
     env_file:
       - docker.env
@@ -14,7 +14,7 @@ services:
 
   pgadmin:
     image: dpage/pgadmin4
-    container_name: c3-customers-pgadmin
+    container_name: real-world-starter-pgadmin
     restart: unless-stopped
     depends_on:
       - db
