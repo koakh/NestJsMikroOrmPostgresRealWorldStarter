@@ -1,4 +1,5 @@
-import { IsNotEmpty } from 'class-validator';
+import { IsArray, IsNotEmpty, IsOptional } from 'class-validator';
+import { Role } from '../user.entity';
 
 export class CreateUserDto {
   @IsNotEmpty()
@@ -9,4 +10,8 @@ export class CreateUserDto {
 
   @IsNotEmpty()
   readonly password: string;
+
+  @IsOptional()
+  @IsArray()
+  readonly roles?: Role[];
 }

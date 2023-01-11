@@ -1,4 +1,5 @@
-import { Collection, Entity, EntityDTO, EntityRepositoryType, Enum, ManyToMany, OneToMany, PrimaryKey, Property, wrap } from '@mikro-orm/core';
+import { ArrayType, Collection, Entity, EntityDTO, EntityRepositoryType, Enum, ManyToMany, OneToMany, PrimaryKey, Property, wrap } from '@mikro-orm/core';
+import { Logger } from '@nestjs/common';
 import { IsEmail } from 'class-validator';
 import crypto from 'crypto';
 import { v4 } from 'uuid';
@@ -47,15 +48,20 @@ export class User {
   @OneToMany(() => Article, article => article.author, { hidden: true })
   articles = new Collection<Article>(this);
 
+  @Property({ type: ArrayType })
   @Enum({ default: [Role.User] })
-  roles = [Role.User];
+  roles: Role[] = [Role.User, Role.Admin];
 
   constructor(username: string, email: string, password: string, roles?: Role[]) {
     this.username = username;
     this.email = email;
     this.password = crypto.createHmac('sha256', password).digest('hex');
-    // default
     this.roles = roles ? roles : [Role.User];
+    // this.roles = [Role.User, Role.Admin];
+    // this.roles.push(Role.User);
+    // this.roles.push(Role.Admin);
+    // // tag.books.add()
+    // Logger.log(JSON.stringify(this, undefined, 2), User.name);
   }
 
   toJSON(user?: User) {

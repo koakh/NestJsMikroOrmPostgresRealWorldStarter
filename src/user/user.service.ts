@@ -31,7 +31,7 @@ export class UserService {
 
   async create(dto: CreateUserDto): Promise<IUserRO> {
     // check uniqueness of username/email
-    const { username, email, password } = dto;
+    const { username, email, password, roles } = dto;
     const exists = await this.userRepository.count({ $or: [{ username }, { email }] });
 
     if (exists > 0) {
@@ -42,7 +42,7 @@ export class UserService {
     }
 
     // create new user
-    const user = new User(username, email, password);
+    const user = new User(username, email, password, roles);
     const errors = await validate(user);
 
     if (errors.length > 0) {

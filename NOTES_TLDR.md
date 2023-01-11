@@ -31,6 +31,9 @@ $ pnpm migration:seed
 # run debug mode
 $ pnpm docker:up
 $ pnpm start:debug
+# or on liner
+$ pnpm docker:teardown && pnpm docker:up && pnpm migration:create && pnpm migration:seed
+# now launch debugger "Launch via NPM"
 ```
 
 add breakpoint to `@Post('users/login')` and launch debugger

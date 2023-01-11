@@ -35,13 +35,14 @@ export class AllExceptionsFilter implements ExceptionFilter {
     const status = exception instanceof HttpException
       ? exception.getStatus()
       : HttpStatus.INTERNAL_SERVER_ERROR;
-    const responseMessage = (type: string, message: string, data?: any) => {
+    const responseMessage = (type: string, message: string, data?: any, errors?: any) => {
       response.status(status).json({
         statusCode: status,
         path: request.url,
         errorType: type,
         errorMessage: message,
         errorData: data,
+        errors,
       });
     };
 
@@ -56,12 +57,22 @@ export class AllExceptionsFilter implements ExceptionFilter {
         // use exception.message.message to get jwt expired
         const errorMessage = exceptionObj.stack;
         // Logger.error(errorMessage, AllExceptionsFilter.name);
-        responseMessage(exceptionObj.name ? exceptionObj.name : 'Error', errorMessage, (exceptionObj as any).errorData ? (exceptionObj as any).errorData : undefined);
+        responseMessage(
+          exceptionObj.name ? exceptionObj.name : 'Error', 
+          errorMessage,
+          (exceptionObj as any).errorData ? (exceptionObj as any).errorData : undefined,
+          (exception.getResponse() as any).errors ? (exception.getResponse() as any).errors : undefined,
+        );
       } else {
         // this prevents omitting errorMessage like the problem that we have in omitted
         const errorMessage = exceptionObj.message;
         // Logger.error(errorMessage, AllExceptionsFilter.name);
-        responseMessage(exceptionObj.name ? exceptionObj.name : 'Error', errorMessage, (exceptionObj as any).errorData ? (exceptionObj as any).errorData : undefined);
+        responseMessage(
+          exceptionObj.name ? exceptionObj.name : 'Error',
+          errorMessage, 
+          (exceptionObj as any).errorData ? (exceptionObj as any).errorData : undefined,
+          (exception.getResponse() as any).errors ? (exception.getResponse() as any).errors : undefined,
+        );
       }
     } catch (err) {
       responseMessage('Error', (exception as any).errorData || exception.message, undefined);

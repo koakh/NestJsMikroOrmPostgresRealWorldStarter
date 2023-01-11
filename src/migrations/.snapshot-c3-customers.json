@@ -104,7 +104,6 @@
           "autoincrement": false,
           "primary": false,
           "nullable": false,
-          "default": "'{user}'",
           "enumItems": [
             "user",
             "admin"

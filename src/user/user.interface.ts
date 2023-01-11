@@ -5,8 +5,8 @@ export interface IUserData {
   email: string;
   accessToken: string;
   roles: Role[];
-  bio: string;
-  image: string;
+  bio?: string;
+  image?: string;
 }
 
 export interface IUserRO {

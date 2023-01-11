@@ -6,6 +6,22 @@
   "configurations": [
     {
       "type": "node",
+      "name": "Launch via NPM",
+      "request": "launch",
+      "runtimeArgs": [
+        "run-script",
+        "start:debug"
+      ],
+      "runtimeExecutable": "npm",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "sourceMaps": true,
+      "trace" : true,
+      "restart": true
+    },
+    {
+      "type": "node",
       "request": "attach",
       "name": "Attach to Remote C3",
       "address": "localhost",
