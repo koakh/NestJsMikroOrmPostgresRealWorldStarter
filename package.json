@@ -1,5 +1,5 @@
 {
-  "name": "c3-customers-backend",
+  "name": "nestjs-mikro-orm-postgres-real-world-starter",
   "version": "1.0.0",
   "description": "c3 customers backend server api",
   "main": "index.js",
@@ -17,9 +17,9 @@
     "test:coverage": "jest --config=jest.json --coverage --coverageDirectory=coverage",
     "test:e2e": "APIURL=http://koakh-laptop:3000/api ./e2e/run-api-tests.sh",
     "package:upgrade": "pnpm up",
-    "docker:build": "docker build . -t c3-customers-backend:latest",
-    "docker:build:nocache": "docker build . -t c3-customers-backend:latest --no-cache",
-    "docker:run": "docker run -it c3-customers-backend:latest sh",
+    "docker:build": "docker build . -t nestjs-mikro-orm-postgres-real-world-starter:latest",
+    "docker:build:nocache": "docker build . -t nestjs-mikro-orm-postgres-real-world-starter:latest --no-cache",
+    "docker:run": "docker run -it nestjs-mikro-orm-postgres-real-world-starter:latest sh",
     "docker:teardown": "docker-compose down --volumes --remove-orphans && rm dist/ -R || true",
     "docker:up": "docker-compose up -d",
     "docker:down": "docker-compose down --volumes --remove-orphans",
@@ -31,14 +31,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mikro-orm/c3-customers-backend.git"
+    "url": "git+https://github.com/mikro-orm/nestjs-mikro-orm-postgres-real-world-starter.git"
   },
   "author": "banan23@gmail.com",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/mikro-orm/c3-customers-backend/issues"
+    "url": "https://github.com/mikro-orm/nestjs-mikro-orm-postgres-real-world-starter/issues"
   },
-  "homepage": "https://github.com/mikro-orm/c3-customers-backend#readme",
+  "homepage": "https://github.com/mikro-orm/nestjs-mikro-orm-postgres-real-world-starter#readme",
   "renovate": {
     "extends": [
       "config:base",

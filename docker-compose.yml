@@ -24,8 +24,8 @@ services:
       - 5480:80
 
   # app:
-  #   image: c3-customers-backend:latest
-  #   container_name: c3-customers-backend
+  #   image: nestjs-mikro-orm-postgres-real-world-starter:latest
+  #   container_name: nestjs-mikro-orm-postgres-real-world-starter
   #   restart: unless-stopped
   #   build:
   #     context: .

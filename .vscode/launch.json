@@ -27,7 +27,7 @@
       "address": "localhost",
       "port": 9229,
       "localRoot": "${workspaceFolder}",
-      // "remoteRoot": "/home/mario/Development/@CriticalLinksBitBucket/c3-customers-backend",
+      // "remoteRoot": "/home/mario/Development/Node/@NestJsStarters/NestJsMikroOrmPostgresRealWorldStarter",
       "sourceMaps": true,
       "trace" : true,
       "restart": true
